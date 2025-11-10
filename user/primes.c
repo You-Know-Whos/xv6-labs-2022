@@ -21,11 +21,11 @@ int main()
             write(p[1],  &i, sizeof(int));
         close(p[1]);
     }
-    wait(0);
+    wait(0); // 先wait再exit，否则父进程结束了子进程还在运行
     exit(0);
 }
 
-void filter(int wr)
+void filter(int wr) 
 {
     int val;
     if (read(wr, &val, sizeof(int)) != sizeof(int))
